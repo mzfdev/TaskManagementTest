@@ -6,6 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 
 app.use(require('./routes/userRouter'));
+app.use(require('./routes/taskRouter'));
 
 app.listen(port);
 console.log('Server on port ', port);

@@ -6,7 +6,7 @@ const createUser = async(req,res)=>{
 
     const response = await pool.query('insert into users (names, lastnames, email, user_password) values ($1, $2, $3, $4)', [name, lastname, email, user_password]);
     console.log(response);
-    res.status(200).json({
+    res.status(201).json({
         message: 'UserCreated',
         body: {
             users: { name, lastname, email, user_password }
