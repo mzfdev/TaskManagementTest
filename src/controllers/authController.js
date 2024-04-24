@@ -18,8 +18,10 @@ const login = async (req, res) => {
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Credentials are wrong' });
         }
+
+        const key = process.env.secretkey
         
-        const token = jwt.sign({ id: user.id, email: user.email }, 'ditobanx', {
+        const token = jwt.sign({ id: user.id, email: user.email }, key, {
             expiresIn: '1h'
         });
         
