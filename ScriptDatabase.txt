@@ -1,0 +1,25 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    names VARCHAR(50) NOT NULL,
+    lastnames VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    user_password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE task (
+    id SERIAL PRIMARY KEY,
+    task_name VARCHAR(100) NOT NULL,
+    description TEXT,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+ALTER TABLE task
+DROP CONSTRAINT task_user_id_fkey,
+ADD CONSTRAINT task_user_id_fkey
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE;
+
+select * from users
+select * from task where user_id = 2
